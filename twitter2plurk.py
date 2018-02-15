@@ -13,10 +13,10 @@ class Twitter2Plurk(object):
         c = configparser.ConfigParser()
         c.read(f)
 
-        self.twitter_ac = c['default']['twitter_access_token'])
-        self.twitter_as = c['default']['twitter_access_token_secret'])
-        self.twitter_ck = c['default']['twitter_consumer_key'])
-        self.twitter_cs = c['default']['twitter_consumer_secret'])
+        t_ak = c['default']['twitter_access_token']
+        t_as = c['default']['twitter_access_token_secret']
+        t_ck = c['default']['twitter_consumer_key']
+        t_cs = c['default']['twitter_consumer_secret']
 
 if '__main__' == __name__:
     t = Twitter2Plurk()
