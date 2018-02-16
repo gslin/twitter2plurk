@@ -24,6 +24,8 @@ class Twitter2Plurk(object):
 
         for status in sorted(list(self.t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
             text = status.text
+            for u in status.urls:
+                text = text.replace(u.url, u.expanded_url)
 
 if '__main__' == __name__:
     t = Twitter2Plurk()
