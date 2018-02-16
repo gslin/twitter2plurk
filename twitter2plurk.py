@@ -35,9 +35,13 @@ class Twitter2Plurk(object):
         sql_select = 'SELECT COUNT(*) FROM entry WHERE twitter_id = ?;'
 
         for status in sorted(list(t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
+            # Generate "text"
             text = status.text
             for u in status.urls:
                 text = text.replace(u.url, u.expanded_url)
+
+            # Generate "url"
+            url = 'https://twitter.com/{}/status/{}'.format(t_user, status.id_str)
 
 if '__main__' == __name__:
     t = Twitter2Plurk()
