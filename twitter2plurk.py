@@ -3,6 +3,7 @@
 import configparser
 import plurk_oauth
 import os
+import sqlite3
 import twitter
 
 class Twitter2Plurk(object):
@@ -12,6 +13,7 @@ class Twitter2Plurk(object):
     def start(self):
         home = os.environ['HOME']
         f_conf = '{}/.config/twitter2plurk/config.ini'.format(home)
+        f_db = '{}/.config/twitter2plurk/entry.sqlite3'.format(home)
 
         c = configparser.ConfigParser()
         c.read(f_conf)
@@ -27,6 +29,7 @@ class Twitter2Plurk(object):
 
         t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
         p = plurk_oauth.PlurkAPI(p_ak, p_as)
+        s = sqlite3.connect(f_db)
 
         for status in sorted(list(t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
             text = status.text
