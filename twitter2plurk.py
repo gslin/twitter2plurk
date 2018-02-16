@@ -51,7 +51,7 @@ class Twitter2Plurk(object):
 
             c.execute(sql_select, (status.id_str, ))
             if 0 == c.fetchone()[0]:
-                pass
+                content = '{} # {}'.format(text, url)
 
 if '__main__' == __name__:
     t = Twitter2Plurk()
