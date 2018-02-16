@@ -20,6 +20,9 @@ class Twitter2Plurk(object):
         t_cs = c['default']['twitter_consumer_secret']
         t_user = c['default']['twitter_username']
 
+        p_ak = c['default']['plurk_app_key']
+        p_as = c['default']['plurk_app_secret']
+
         self.t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
 
         for status in sorted(list(self.t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
