@@ -44,6 +44,12 @@ class Twitter2Plurk(object):
             # Generate "url"
             url = 'https://twitter.com/{}/status/{}'.format(urllib.parse.quote(t_user), urllib.parse.quote(status.id_str))
 
+            c = s.cursor()
+
+            c.execute(sql_select, (status.id_str, ))
+            if 0 == c.fetchone()[0]:
+                pass
+
 if '__main__' == __name__:
     t = Twitter2Plurk()
     t.start()
