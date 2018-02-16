@@ -1,6 +1,6 @@
 # twitter2plurk
 
-## Setuping configuration
+## Setting up configuration
 
 In `~/.config/twitter2plurk/config.ini`:
 
