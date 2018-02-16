@@ -23,9 +23,9 @@ class Twitter2Plurk(object):
         p_ak = c['default']['plurk_app_key']
         p_as = c['default']['plurk_app_secret']
 
-        self.t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
+        t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
 
-        for status in sorted(list(self.t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
+        for status in sorted(list(t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
             text = status.text
             for u in status.urls:
                 text = text.replace(u.url, u.expanded_url)
