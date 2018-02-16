@@ -1,5 +1,7 @@
 # twitter2plurk
 
+This script will use Twitter API to read user's timeline, then post to Plurk.
+
 ## Setting up configuration
 
 In `~/.config/twitter2plurk/config.ini`:
