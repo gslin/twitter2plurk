@@ -10,10 +10,11 @@ class Twitter2Plurk(object):
         pass
 
     def start(self):
-        f = '{}/.config/twitter2plurk/config.ini'.format(os.environ['HOME'])
+        home = os.environ['HOME']
+        f_conf = '{}/.config/twitter2plurk/config.ini'.format(home)
 
         c = configparser.ConfigParser()
-        c.read(f)
+        c.read(f_conf)
 
         t_ak = c['default']['twitter_access_token']
         t_as = c['default']['twitter_access_token_secret']
