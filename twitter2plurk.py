@@ -5,6 +5,7 @@ import plurk_oauth
 import os
 import sqlite3
 import twitter
+import urllib
 
 class Twitter2Plurk(object):
     def __init__(self):
@@ -41,7 +42,7 @@ class Twitter2Plurk(object):
                 text = text.replace(u.url, u.expanded_url)
 
             # Generate "url"
-            url = 'https://twitter.com/{}/status/{}'.format(t_user, status.id_str)
+            url = 'https://twitter.com/{}/status/{}'.format(urllib.parse.quote(t_user), urllib.parse.quote(status.id_str))
 
 if '__main__' == __name__:
     t = Twitter2Plurk()
