@@ -22,6 +22,9 @@ class Twitter2Plurk(object):
 
         self.t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
 
+        for status in sorted(list(self.t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
+            text = status.text
+
 if '__main__' == __name__:
     t = Twitter2Plurk()
     t.start()
