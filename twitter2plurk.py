@@ -53,11 +53,15 @@ class Twitter2Plurk(object):
             c.execute(sql_select, (status.id_str, ))
             if 0 == c.fetchone()[0]:
                 content = '{} # {}'.format(text, url)
+                print('* content = {}'.format(content))
+
                 res = p.callAPI('/APP/Timeline/plurkAdd', {
                     'content': content,
                     'qualifier': ':',
                 })
 
+                print('* type(res) = {}'.format(type(res)))
+                print('* res = {}'.format(res))
                 if type(res) is dict and res['plurk_id'] > 0:
                     c.execute(sql_insert, (status.id_str, int(time.time())))
                     s.commit()
