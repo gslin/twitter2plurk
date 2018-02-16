@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import configparser
+import plurk_oauth
 import os
 import twitter
 
@@ -24,6 +25,7 @@ class Twitter2Plurk(object):
         p_as = c['default']['plurk_app_secret']
 
         t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
+        p = plurk_oauth.PlurkAPI(p_ak, p_as)
 
         for status in sorted(list(t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
             text = status.text

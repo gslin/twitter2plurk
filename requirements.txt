@@ -1,1 +1,2 @@
+plurk-oauth
 python-twitter
