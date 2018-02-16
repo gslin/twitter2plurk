@@ -27,9 +27,12 @@ class Twitter2Plurk(object):
 
         p_ak = c['default']['plurk_app_key']
         p_as = c['default']['plurk_app_secret']
+        p_tk = c['default']['plurk_token']
+        p_ts = c['default']['plurk_token_secret']
 
         t = twitter.Api(access_token_key=t_ak, access_token_secret=t_as, consumer_key=t_ck, consumer_secret=t_cs)
         p = plurk_oauth.PlurkAPI(p_ak, p_as)
+        p.authorize(p_tk, p_ts)
         s = sqlite3.connect(f_db)
 
         sql_insert = 'INSERT INTO entry (twitter_id, created_at) VALUES (?, ?);'
