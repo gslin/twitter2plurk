@@ -31,6 +31,9 @@ class Twitter2Plurk(object):
         p = plurk_oauth.PlurkAPI(p_ak, p_as)
         s = sqlite3.connect(f_db)
 
+        sql_insert = 'INSERT INTO entry (twitter_id, created_at) VALUES (?, ?);'
+        sql_select = 'SELECT COUNT(*) FROM entry WHERE twitter_id = ?;'
+
         for status in sorted(list(t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
             text = status.text
             for u in status.urls:
