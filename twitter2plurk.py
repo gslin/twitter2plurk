@@ -4,6 +4,7 @@ import configparser
 import plurk_oauth
 import os
 import sqlite3
+import time
 import twitter
 import urllib
 
@@ -52,6 +53,16 @@ class Twitter2Plurk(object):
             c.execute(sql_select, (status.id_str, ))
             if 0 == c.fetchone()[0]:
                 content = '{} # {}'.format(text, url)
+                res = p.callAPI('/APP/Timeline/plurkAdd', {
+                    'content': content,
+                    'qualifier': ':',
+                })
+
+                if type(res) is 'dict' and res['plurk_id'] > 0:
+                    c.execute(sql_insert, (status.id_str, int(time.time())))
+                    s.commit()
+                else:
+                    s.rollback()
 
 if '__main__' == __name__:
     t = Twitter2Plurk()
