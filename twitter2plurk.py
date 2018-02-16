@@ -58,7 +58,7 @@ class Twitter2Plurk(object):
                     'qualifier': ':',
                 })
 
-                if type(res) is 'dict' and res['plurk_id'] > 0:
+                if type(res) is dict and res['plurk_id'] > 0:
                     c.execute(sql_insert, (status.id_str, int(time.time())))
                     s.commit()
                 else:
