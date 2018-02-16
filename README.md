@@ -16,7 +16,7 @@ In `~/.config/twitter2plurk/config.ini`:
 ## Initializing sqlite3 database
 
     $ sqlite3 ~/.config/twitter2plurk/entry.sqlite3
-    sqlite> CREATE TABLE entry (id INTEGER PRIMARY KEY AUTOINCREMENT, twitter_id TEXT, created_at INTEGER);
+    sqlite> CREATE TABLE entry (id INTEGER PRIMARY KEY AUTOINCREMENT, twitter_id TEXT UNIQUE, created_at INTEGER);
 
 ## License
 
