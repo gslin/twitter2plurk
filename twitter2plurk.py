@@ -65,6 +65,7 @@ class Twitter2Plurk(object):
                 })
 
                 print('* type(status) = {}'.format(type(status)))
+                print('* status = {}'.format(status))
                 print('* type(res) = {}'.format(type(res)))
                 print('* res = {}'.format(res))
                 if type(res) is dict and res['plurk_id'] > 0:
