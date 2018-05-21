@@ -46,7 +46,7 @@ class Twitter2Plurk(object):
                 text = text.replace(u.url, u.expanded_url)
 
             # Add #retweet if it's retweet.
-            if status.user.user_screen_name != t_user:
+            if status.user.screen_name != t_user:
                 text += ' #retweet'
 
             # Generate "url"
