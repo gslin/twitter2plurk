@@ -40,14 +40,14 @@ class Twitter2Plurk(object):
         sql_select = 'SELECT COUNT(*) FROM entry WHERE twitter_id = ?;'
 
         for status in sorted(list(t.GetUserTimeline(screen_name=t_user)), key=lambda x: x.id):
+            # Skip if it's retweet.
+            if status.retweeted:
+                continue
+
             # Generate "text"
             text = status.text
             for u in status.urls:
                 text = text.replace(u.url, u.expanded_url)
-
-            # Add #retweet if it's retweet.
-            if status.retweeted:
-                text += ' #retweet'
 
             # Generate "url"
             url = 'https://twitter.com/{}/status/{}'.format(urllib.parse.quote(t_user), urllib.parse.quote(status.id_str))
