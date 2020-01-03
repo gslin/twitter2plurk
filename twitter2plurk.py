@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import configparser
+import html
 import plurk_oauth
 import os
 import sqlite3
@@ -44,8 +45,8 @@ class Twitter2Plurk(object):
             if status.retweeted:
                 continue
 
-            # Generate "text"
-            text = status.text
+            # Generate "text" with unescape (workaround).
+            text = html.unescape(status.text)
             for u in status.urls:
                 text = text.replace(u.url, u.expanded_url)
 
