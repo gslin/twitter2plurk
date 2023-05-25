@@ -40,7 +40,7 @@ class Twitter2Plurk(object):
                 continue
 
             # Generate "text" with unescape (workaround).
-            text = item.title
+            text = item['title']
 
             # Generate parameters.
             id_str = item['url'].split('/')[-1]
