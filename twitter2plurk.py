@@ -39,11 +39,9 @@ class Twitter2Plurk(object):
             if item['title'].startswith('@'):
                 continue
 
-            # Generate "text" with unescape (workaround).
-            text = item['title']
-
             # Generate parameters.
             id_str = item['url'].split('/')[-1]
+            text = item['title']
             url = item['url']
 
             c = s.cursor()
