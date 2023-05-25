@@ -1,2 +1,3 @@
+lxml
 plurk-oauth
 requests
