@@ -1,0 +1,7 @@
+#
+[default]
+plurk_app_key =
+plurk_app_secret =
+plurk_token =
+plurk_token_secret =
+twitter_rssbridge_jsonfeed_url =
