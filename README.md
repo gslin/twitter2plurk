@@ -11,11 +11,7 @@ In `~/.config/twitter2plurk/config.ini`:
     plurk_app_secret = x
     plurk_token = x
     plurk_token_secret = x
-    twitter_access_token = x
-    twitter_access_token_secret = x
-    twitter_consumer_key = x
-    twitter_consumer_secret = x
-    twitter_username = x
+    twitter_rssbridge_jsonfeed_url = x
 
 ## Initializing sqlite3 database
 
