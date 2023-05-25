@@ -37,7 +37,7 @@ class Twitter2Plurk(object):
         sql_insert = 'INSERT INTO entry (twitter_id, created_at) VALUES (?, ?);'
         sql_select = 'SELECT COUNT(*) FROM entry WHERE twitter_id = ?;'
 
-        c = Cleaner(allow_tags=['a'])
+        cl = Cleaner(allow_tags=['a'])
 
         for item in items:
             # Skip if it's retweet.
@@ -47,7 +47,7 @@ class Twitter2Plurk(object):
             # Craft "text".
             #
             # First to remove all tags except "a" and root's "div".
-            text = c.clean_html(item['content_html'])
+            text = cl.clean_html(item['content_html'])
 
             # Remove root's "div".
             text = text.replace('<div>', '').replace('</div>', '')
