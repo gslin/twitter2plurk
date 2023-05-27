@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import configparser
-import plurk_oauth
 import os
+import plurk_oauth
 import re
 import requests
 import sqlite3
