@@ -54,7 +54,7 @@ class Twitter2Plurk(object):
             text = text.replace('<div>', '').replace('</div>', '')
 
             # Replace each "a" element with its href link and unescape.
-            tokens = re.split(r'<a href="(.*)?">(?:.*)?</a>', text)
+            tokens = re.split(r'<a href="(.*?)">(?:.*?)</a>', text, flags=re.DOTALL)
             for i in range(1, len(tokens), 2):
                 tokens[i] = re.sub(r'<a href="(.*)">.*</a>', r'\1', tokens[i])
                 tokens[i] = html.unescape(tokens[i])
