@@ -45,6 +45,9 @@ class Twitter2Plurk(object):
             if item['title'].startswith('@'):
                 continue
 
+            # Print out details.
+            print('* item = {}'.format(item))
+
             # Craft "text".
             #
             # First to remove all tags except "a" and root's "div".
